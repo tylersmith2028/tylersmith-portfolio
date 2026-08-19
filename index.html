@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tyler James Smith — Mechanical Engineer</title>
+<meta name="description" content="Tyler James Smith — Mechanical Engineering student at Auburn University. Manufacturing, fixture design, and process improvement.">
+
+<!--
+  ============================================================
+  HOW TO EDIT THIS SITE
+  ============================================================
+  This is one self-contained file: HTML, CSS, and JS all live
+  here. To edit, just open this file in any text editor.
+
+  WHERE YOUR PHOTOS GO:
+  Search this file for "PLACEHOLDER" (Ctrl+F). Every photo slot
+  is a <div class="photo-slot"> block with a dashed brass border.
+  To add a real photo, replace that whole <div class="photo-slot">
+  with:
+      <img src="images/your-file.jpg" alt="Description here" class="real-photo">
+  Create an "images" folder next to this file and drop your
+  photos in there — then point src="images/filename.jpg" at them.
+
+  WHERE YOUR TEXT GOES:
+  Most sections are already written using your resume content.
+  A few spots are marked [OPTIONAL — ADD YOUR OWN] in comments
+  for short personal touches (an About line, project captions).
+  Everything else can be edited directly — just find the text
+  in the HTML below and change it.
+
+  COLORS / FONTS:
+  All colors and fonts are defined once at the top of the <style>
+  block under ":root". Change a value there and it updates
+  everywhere automatically.
+
+  RESUME LINK / LINKEDIN:
+  The "Download Resume" buttons point to "resume.pdf" — put a
+  PDF of your resume next to this file named resume.pdf, or
+  change the href. The "LinkedIn" links currently point to "#" —
+  replace with your real profile URL.
+  ============================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<noscript><style>.reveal{ opacity:1 !important; transform:none !important; }</style></noscript>
+
+<style>
+  /* ============================================================
+     TOKENS — change these to retheme the whole site
+     ============================================================ */
+  :root{
+    --ink:      #0E141C;   /* primary background — blueprint navy */
+    --panel:    #16202B;   /* alternate section background */
+    --panel-2:  #1C2733;   /* card background */
+    --steel:    #6C8AA6;   /* secondary text, dividers, ticks */
+    --steel-dim:#3C4B5A;   /* faint lines/borders on dark bg */
+    --brass:    #C4924C;   /* accent — links, emphasis, borders */
+    --brass-dim:rgba(196,146,76,0.10);
+    --paper:    #EDE7DA;   /* primary text on dark bg */
+    --paper-dim:#B9BFC6;   /* secondary text on dark bg */
+
+    --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+    --font-sans: 'IBM Plex Sans', -apple-system, sans-serif;
+
+    --maxw: 1080px;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; }
+  }
+
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--font-sans);
+    line-height:1.6;
+    font-size:16px;
+    background-image:
+      linear-gradient(var(--steel-dim) 1px, transparent 1px),
+      linear-gradient(90deg, var(--steel-dim) 1px, transparent 1px);
+    background-size:48px 48px;
+    background-attachment:fixed;
+    background-position:center;
+    position:relative;
+  }
+  body::before{
+    content:'';
+    position:fixed; inset:0;
+    background:radial-gradient(ellipse at 50% 0%, rgba(14,20,28,0.2), rgba(14,20,28,0.92) 65%);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  a{ color:var(--brass); text-decoration:none; }
+  a:hover{ text-decoration:underline; }
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--brass);
+    outline-offset:3px;
+  }
+
+  img.real-photo{ width:100%; height:100%; object-fit:cover; display:block; border-radius:4px; }
+  img.real-photo-contain{ width:100%; height:100%; object-fit:contain; display:block; border-radius:4px; padding:10px; box-sizing:border-box; background:var(--panel-2); }
+
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 24px; position:relative; z-index:1; }
+
+  h1,h2,h3{ font-family:var(--font-mono); font-weight:600; letter-spacing:-0.01em; }
+
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:.72rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--brass);
+  }
+
+  /* ============================================================
+     NAV
+     ============================================================ */
+  header.site-nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(14,20,28,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--steel-dim);
+  }
+  .nav-inner{
+    max-width:var(--maxw); margin:0 auto; padding:14px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .nav-id{
+    font-family:var(--font-mono); font-size:.85rem; color:var(--paper);
+    letter-spacing:.04em;
+  }
+  .nav-id span{ color:var(--brass); }
+  nav.nav-links{ display:flex; gap:28px; }
+  nav.nav-links a{
+    font-family:var(--font-mono); font-size:.75rem; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--paper-dim);
+  }
+  nav.nav-links a:hover{ color:var(--brass); text-decoration:none; }
+
+  .nav-toggle{
+    display:none; background:none; border:1px solid var(--steel-dim);
+    color:var(--paper); font-family:var(--font-mono); font-size:.7rem;
+    padding:8px 12px; letter-spacing:.08em; cursor:pointer; border-radius:3px;
+  }
+
+  @media (max-width:760px){
+    nav.nav-links{
+      position:absolute; top:100%; left:0; right:0;
+      background:var(--panel);
+      flex-direction:column; gap:0;
+      border-bottom:1px solid var(--steel-dim);
+      display:none;
+    }
+    nav.nav-links.open{ display:flex; }
+    nav.nav-links a{ padding:14px 24px; border-top:1px solid var(--steel-dim); }
+    .nav-toggle{ display:block; }
+  }
+
+  /* ============================================================
+     DIMENSION-LINE SECTION DIVIDER  (signature element)
+     ============================================================ */
+  .dim-divider{
+    position:relative;
+    display:flex; align-items:center; gap:16px;
+    margin:0 0 40px 0;
+  }
+  .dim-divider::before, .dim-divider::after{
+    content:''; position:absolute; top:50%; width:1px; height:12px;
+    background:var(--steel); transform:translateY(-50%);
+  }
+  .dim-divider::before{ left:0; }
+  .dim-divider::after{ right:0; }
+  .dim-line{ flex:1; height:1px; background:var(--steel-dim); }
+  .dim-label{
+    font-family:var(--font-mono); font-size:.72rem; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--steel); white-space:nowrap;
+  }
+
+  section{ padding:96px 0; position:relative; z-index:1; }
+  section.alt{ background:rgba(22,32,43,0.55); }
+
+  /* ============================================================
+     HERO
+     ============================================================ */
+  .hero{ padding-top:72px; padding-bottom:88px; }
+  .hero-grid{
+    display:grid; grid-template-columns:1.3fr 0.9fr; gap:56px; align-items:center;
+  }
+  @media (max-width:760px){ .hero-grid{ grid-template-columns:1fr; } }
+
+  .hero h1{
+    font-size:clamp(2.1rem, 5vw, 3.1rem);
+    color:var(--paper);
+    line-height:1.08;
+    margin-bottom:14px;
+  }
+  .hero .role{
+    font-family:var(--font-mono); font-size:1rem; color:var(--brass);
+    letter-spacing:.04em; margin-bottom:22px;
+  }
+  .hero p.tagline{
+    color:var(--paper-dim); font-size:1.05rem; max-width:46ch; margin-bottom:32px;
+  }
+  .btn-row{ display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{
+    font-family:var(--font-mono); font-size:.78rem; letter-spacing:.06em;
+    text-transform:uppercase; padding:13px 22px; border-radius:3px;
+    display:inline-block; border:1px solid transparent;
+  }
+  .btn-primary{ background:var(--brass); color:var(--ink); font-weight:600; }
+  .btn-primary:hover{ background:#d6a15c; text-decoration:none; }
+  .btn-ghost{ border-color:var(--steel-dim); color:var(--paper); }
+  .btn-ghost:hover{ border-color:var(--brass); color:var(--brass); text-decoration:none; }
+
+  .detail-frame{ position:relative; }
+  .detail-tag{
+    font-family:var(--font-mono); font-size:.68rem; letter-spacing:.1em;
+    color:var(--brass); text-transform:uppercase; margin-bottom:8px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .detail-tag::after{ content:''; flex:1; height:1px; background:var(--steel-dim); }
+
+  .photo-slot{
+    border:2px dashed var(--brass);
+    background:var(--brass-dim);
+    border-radius:4px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:10px; color:var(--brass); text-align:center; padding:28px;
+    min-height:240px;
+  }
+  .photo-slot svg{ width:30px; height:30px; opacity:.85; }
+  .photo-slot .slot-title{
+    font-family:var(--font-mono); font-size:.72rem; letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+  .photo-slot .slot-sub{ font-size:.72rem; color:var(--paper-dim); max-width:26ch; }
+
+  .hero-photo .photo-slot{ min-height:320px; aspect-ratio:4/5; }
+
+  /* ============================================================
+     ABOUT
+     ============================================================ */
+  .about-grid{
+    display:grid; grid-template-columns:2fr 1fr; gap:48px;
+  }
+  @media (max-width:760px){ .about-grid{ grid-template-columns:1fr; } }
+  .about-grid p{ color:var(--paper-dim); font-size:1.02rem; margin-bottom:16px; max-width:62ch; }
+  .stat-block{
+    border-left:2px solid var(--brass); padding-left:16px; margin-bottom:20px;
+  }
+  .stat-num{ font-family:var(--font-mono); font-size:1.6rem; color:var(--paper); }
+  .stat-label{ font-family:var(--font-mono); font-size:.7rem; letter-spacing:.08em; color:var(--steel); text-transform:uppercase; }
+
+  /* ============================================================
+     EXPERIENCE
+     ============================================================ */
+  .exp-card{
+    background:var(--panel-2); border:1px solid var(--steel-dim); border-radius:6px;
+    padding:36px; margin-bottom:28px;
+  }
+  .exp-head{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-bottom:18px; }
+  .exp-title{ font-family:var(--font-mono); font-size:1.1rem; color:var(--paper); }
+  .exp-sub{ color:var(--steel); font-size:.9rem; }
+  .exp-date{ font-family:var(--font-mono); font-size:.78rem; color:var(--brass); white-space:nowrap; }
+  .exp-list{ list-style:none; }
+  .exp-list li{
+    position:relative; padding-left:22px; margin-bottom:12px; color:var(--paper-dim);
+  }
+  .exp-list li::before{
+    content:'—'; position:absolute; left:0; color:var(--brass);
+  }
+  .exp-photos{
+    display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:24px;
+  }
+  @media (max-width:600px){ .exp-photos{ grid-template-columns:1fr; } }
+  .exp-photos .photo-slot{ min-height:160px; padding:18px; }
+
+  /* ============================================================
+     PROJECTS
+     ============================================================ */
+  .project-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:28px;
+  }
+  @media (max-width:700px){ .project-grid{ grid-template-columns:1fr; } }
+  .project-card{
+    background:var(--panel-2); border:1px solid var(--steel-dim); border-radius:6px;
+    overflow:hidden; display:flex; flex-direction:column;
+  }
+  .project-card .photo-slot{ min-height:190px; border-radius:0; border-width:2px 0 2px 0; border-left:none; border-right:none; }
+  .project-body{ padding:24px; flex:1; display:flex; flex-direction:column; }
+  .project-title{ font-family:var(--font-mono); font-size:1rem; color:var(--paper); margin-bottom:10px; }
+  .project-body p{ color:var(--paper-dim); font-size:.92rem; margin-bottom:16px; flex:1; }
+  .tag-row{ display:flex; flex-wrap:wrap; gap:8px; }
+  .tag{
+    font-family:var(--font-mono); font-size:.66rem; letter-spacing:.05em; text-transform:uppercase;
+    color:var(--steel); border:1px solid var(--steel-dim); padding:4px 9px; border-radius:20px;
+  }
+
+  /* ============================================================
+     SKILLS
+     ============================================================ */
+  .skills-groups{ display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
+  @media (max-width:760px){ .skills-groups{ grid-template-columns:1fr; } }
+  .skill-group .eyebrow{ margin-bottom:14px; display:block; }
+  .chip-row{ display:flex; flex-wrap:wrap; gap:8px; }
+  .chip{
+    font-family:var(--font-mono); font-size:.76rem; color:var(--paper-dim);
+    border:1px solid var(--steel-dim); padding:7px 12px; border-radius:4px;
+  }
+
+  /* ============================================================
+     EDUCATION
+     ============================================================ */
+  .edu-card{
+    display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:24px;
+    background:var(--panel-2); border:1px solid var(--steel-dim); border-radius:6px; padding:32px;
+  }
+  .edu-main .exp-title{ margin-bottom:6px; }
+  .edu-meta{ color:var(--paper-dim); font-size:.92rem; }
+  .edu-stats{ display:flex; gap:32px; flex-wrap:wrap; }
+  .edu-stats .stat-num{ font-size:1.4rem; }
+
+  /* ============================================================
+     FOOTER — title block
+     ============================================================ */
+  footer{ border-top:1px solid var(--steel-dim); padding:56px 0 40px; position:relative; z-index:1; }
+  .footer-grid{
+    display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px;
+  }
+  .footer-name{ font-family:var(--font-mono); color:var(--paper); font-size:1rem; margin-bottom:6px; }
+  .footer-links{ display:flex; gap:20px; flex-wrap:wrap; }
+  .footer-links a{ font-family:var(--font-mono); font-size:.78rem; color:var(--paper-dim); }
+  .footer-links a:hover{ color:var(--brass); }
+  .footer-note{
+    font-family:var(--font-mono); font-size:.7rem; color:var(--steel);
+    margin-top:32px; letter-spacing:.04em;
+  }
+
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <div class="nav-id">T. SMITH <span>— REV A</span></div>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">MENU</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow" style="margin-bottom:14px;">Mechanical Engineering — Auburn University</div>
+      <h1>Tyler James<br>Smith</h1>
+      <div class="role">Manufacturing &amp; Design</div>
+      <p class="tagline">
+        I like problems that have to hold up in the real world — fixtures that
+        need to survive a production line, processes that need to hit a
+        tolerance, designs that need to actually get built.
+      </p>
+      <!-- [OPTIONAL — ADD YOUR OWN]: you could add one more personal
+           sentence here about what you're looking for this summer. -->
+      <div class="btn-row">
+        <a class="btn btn-primary" href="resume.pdf">Download Resume</a>
+        <a class="btn btn-ghost" href="mailto:Tjs0117@auburn.edu">Email Me</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/tyler-smith-94389b386/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="hero-photo detail-frame">
+      <div class="detail-tag">Detail A — Profile</div>
+      <img src="images/profile.jpg" alt="Tyler James Smith" class="real-photo" style="min-height:320px; aspect-ratio:4/5; object-fit:cover; border:1px solid var(--steel-dim); border-radius:4px;">
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ABOUT
+     ============================================================ -->
+<section id="about">
+  <div class="wrap">
+    <div class="dim-divider"><span class="dim-line"></span><span class="dim-label">01 — About</span><span class="dim-line"></span></div>
+    <div class="about-grid reveal">
+      <div>
+        <p>
+          I'm a junior in Mechanical Engineering at Auburn University, focused
+          on manufacturing and design. Most of my experience is hands-on —
+          fixture design, machining, root cause analysis, and process
+          improvement — built through an internship at Smith &amp; Wesson and
+          a Lean Six Sigma Green Belt project in Germany.
+        </p>
+        <p>
+          I use SolidWorks for design work and MATLAB for analysis, and I'm
+          just as comfortable running a root cause investigation on a
+          production line as I am leading a team project in the classroom.
+          Outside of engineering, I tutor other students in calculus and
+          physics, and I've led a 40-person volunteer project from budget to
+          finish.
+        </p>
+      </div>
+      <div>
+        <div class="stat-block">
+          <div class="stat-num">3.89 / 4.00</div>
+          <div class="stat-label">GPA — Dean's List</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">67%</div>
+          <div class="stat-label">Cycle time reduction, butt stock reaming</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">Green Belt</div>
+          <div class="stat-label">Lean Six Sigma Certification</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     EXPERIENCE
+     ============================================================ -->
+<section id="experience" class="alt">
+  <div class="wrap">
+    <div class="dim-divider"><span class="dim-line"></span><span class="dim-label">02 — Experience</span><span class="dim-line"></span></div>
+
+    <div class="exp-card reveal">
+      <div class="exp-head">
+        <div>
+          <div class="exp-title">Manufacturing Engineering Intern</div>
+          <div class="exp-sub">Smith &amp; Wesson Brands, Inc. — Maryville, TN</div>
+        </div>
+        <div class="exp-date">May – Aug 2026</div>
+      </div>
+      <ul class="exp-list">
+        <li>Designed and implemented a new manufacturing process to bring existing parts into compliance with state regulations, validating it through a 500-unit pilot lot that reduced cycle time by over 60%.</li>
+        <li>Designed a magazine-style loading fixture to replace a section of an existing fixture, enabling faster, more efficient staging of metal blanks for pressing.</li>
+        <li>Modified an existing fixture to reliably detect missing springs in striker pins, adding a consistent quality check to the assembly process.</li>
+        <li>Self-led a root cause investigation into slide defects — built a data collection method tracking fallout by machine number and identified a 75% association between defects and two specific machines, prompting both to be removed from service.</li>
+        <li>Supported production recovery by assembling 1,100+ pistol slides; created updated work instructions and trained assembly operators.</li>
+        <li>Machined and inspected parts using milling, grinding, drilling, and tapping while holding dimensional tolerances of ±0.001 in.</li>
+      </ul>
+
+      <div class="exp-photos">
+        <div class="photo-slot" style="border-style:solid; padding:0; min-height:200px; background:var(--panel-2);">
+          <img src="images/one-two-three-blocks.png" alt="Two machined 1-2-3 blocks with precision-tapped hole patterns, milled and inspected to ±0.001 in. tolerances" class="real-photo-contain">
+        </div>
+        <div class="photo-slot" style="border-style:solid; padding:0; min-height:200px; background:var(--panel-2);">
+          <img src="images/fixture-progression.png" alt="SolidWorks progression of the butt stock fixture design, from individual component to full assembly" class="real-photo-contain">
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-card reveal">
+      <div class="exp-head">
+        <div>
+          <div class="exp-title">International Lean Six Sigma Green Belt</div>
+          <div class="exp-sub">Auburn University Study Abroad — Germany</div>
+        </div>
+        <div class="exp-date">May 2026</div>
+      </div>
+      <ul class="exp-list">
+        <li>Earned Lean Six Sigma Green Belt certification through classroom study and an applied warehouse optimization project for Pax Bräu Brewery in Oberelsbach, Germany.</li>
+        <li>Used DMAIC structure and Lean tools, including value stream mapping, 5 Whys analysis, and SIPOC, to address inventory flow and storage inefficiencies.</li>
+        <li>Created storage layout recommendations projected to reduce retrieval time and forklift travel by 50%, and increase cooler storage utilization by 87.5%.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROJECTS
+     ============================================================ -->
+<section id="projects">
+  <div class="wrap">
+    <div class="dim-divider"><span class="dim-line"></span><span class="dim-label">03 — Projects</span><span class="dim-line"></span></div>
+
+    <div class="project-grid reveal">
+
+      <div class="project-card">
+        <div class="photo-slot" style="border-style:solid; padding:0; min-height:220px; background:var(--panel-2);">
+          <img src="images/butt-stock-fixture.png" alt="SolidWorks render of the press fixture designed for the fixed butt stock manufacturing process" class="real-photo-contain">
+        </div>
+        <div class="project-body">
+          <div class="project-title">Fixed Butt Stock Manufacturing Process</div>
+          <p>Designed a new manufacturing process and three custom fixtures
+             to bring an existing product line into state compliance,
+             validated through a 500-unit pilot lot that cut cycle time by
+             over 60%.</p>
+          <div class="tag-row">
+            <span class="tag">Fixture Design</span>
+            <span class="tag">Process Validation</span>
+            <span class="tag">Manufacturing</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <!-- PLACEHOLDER: photo of the light-indicator fixture in action,
+             or a diagram explaining how it flags a missing part. -->
+        <div class="photo-slot">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
+          <div class="slot-title">Add Photo or Diagram</div>
+        </div>
+        <div class="project-body">
+          <div class="project-title">Striker Pin Inspection Fixture</div>
+          <p>Modified an existing fixture with adjustable screws and a
+             light-based indicator to reliably flag missing springs in
+             striker pins before parts reach assembly — a simple,
+             self-checking quality gate.</p>
+          <div class="tag-row">
+            <span class="tag">Poka-Yoke</span>
+            <span class="tag">Quality</span>
+            <span class="tag">Fixture Design</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="photo-slot" style="border-style:solid; padding:0; min-height:220px; background:var(--panel-2);">
+          <img src="images/hdpe-drawing.png" alt="Engineering assembly drawing of the HDPE pipe butt fusion machine with BOM table and fabrication notes" class="real-photo-contain">
+        </div>
+        <div class="project-body">
+          <div class="project-title">HDPE Pipe Butt Fusion Machine</div>
+          <p>Collaborated in a 5-person team to design and model a 1" HDPE
+             pipe fusion machine in SolidWorks, with 15+ sub-components and
+             5+ design iterations for manufacturability and low-cost,
+             resource-limited deployment. (MECH 2220)</p>
+          <div class="tag-row">
+            <span class="tag">SolidWorks</span>
+            <span class="tag">DFM</span>
+            <span class="tag">Team Design</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="photo-slot" style="border-style:solid; padding:0; min-height:220px; background:var(--panel-2);">
+          <img src="images/warehouse-layout.png" alt="Storage layout diagram from the warehouse optimization project, showing pallet placement blocks" class="real-photo-contain">
+        </div>
+        <div class="project-body">
+          <div class="project-title">Warehouse Optimization — Pax Bräu Brewery</div>
+          <p>Used DMAIC, value stream mapping, and 5 Whys analysis to
+             redesign warehouse storage for a German brewery, with
+             recommendations projected to cut retrieval time by 50% and
+             raise cooler storage utilization by 87.5%.</p>
+          <div class="tag-row">
+            <span class="tag">Six Sigma</span>
+            <span class="tag">DMAIC</span>
+            <span class="tag">Process Improvement</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SKILLS
+     ============================================================ -->
+<section id="skills" class="alt">
+  <div class="wrap">
+    <div class="dim-divider"><span class="dim-line"></span><span class="dim-label">04 — Skills</span><span class="dim-line"></span></div>
+
+    <div class="skills-groups reveal">
+      <div class="skill-group">
+        <span class="eyebrow">Design &amp; Manufacturing</span>
+        <div class="chip-row">
+          <span class="chip">SolidWorks</span>
+          <span class="chip">CNC Machining</span>
+          <span class="chip">Manual Machining</span>
+          <span class="chip">Fixture Design</span>
+          <span class="chip">GD&amp;T</span>
+          <span class="chip">Precision Tolerancing (±0.001")</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <span class="eyebrow">Process Improvement</span>
+        <div class="chip-row">
+          <span class="chip">Lean Six Sigma</span>
+          <span class="chip">DMAIC</span>
+          <span class="chip">Value Stream Mapping</span>
+          <span class="chip">5 Whys</span>
+          <span class="chip">SIPOC</span>
+          <span class="chip">Root Cause Analysis</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <span class="eyebrow">Software</span>
+        <div class="chip-row">
+          <span class="chip">MATLAB</span>
+          <span class="chip">Microsoft Excel</span>
+          <span class="chip">Microsoft Office</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     EDUCATION
+     ============================================================ -->
+<section id="education">
+  <div class="wrap">
+    <div class="dim-divider"><span class="dim-line"></span><span class="dim-label">05 — Education</span><span class="dim-line"></span></div>
+
+    <div class="edu-card reveal">
+      <div class="edu-main">
+        <div class="exp-title">B.S. Mechanical Engineering</div>
+        <div class="edu-meta">Auburn University, Auburn, AL — Expected May 2028</div>
+        <div class="edu-meta">Dean's List: Fall 2024, Spring 2025, Spring 2026</div>
+        <div class="edu-meta">Pi Tau Sigma, Mechanical Engineering Honor Society — Initiate</div>
+      </div>
+      <div class="edu-stats">
+        <div>
+          <div class="stat-num">3.89</div>
+          <div class="stat-label">GPA / 4.00</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER / TITLE BLOCK
+     ============================================================ -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-name">Tyler James Smith</div>
+        <div class="edu-meta">Knoxville, TN · Auburn, AL</div>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:Tjs0117@auburn.edu">Tjs0117@auburn.edu</a>
+        <a href="https://www.linkedin.com/in/tyler-smith-94389b386/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="resume.pdf">Download Résumé</a>
+      </div>
+    </div>
+    <div class="footer-note">SHEET 1 OF 1 — LAST REVISED AUG 2026 — REV A</div>
+  </div>
+</footer>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open);
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReduced && 'IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  }
+
+  // Safety net: if anything is still hidden after 2.5s (e.g. an
+  // observer edge case), reveal it anyway so content is never stuck.
+  setTimeout(() => {
+    document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in'));
+  }, 2500);
+</script>
+
+</body>
+</html>
